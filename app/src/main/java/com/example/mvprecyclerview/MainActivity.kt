@@ -9,24 +9,29 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvprecyclerview.databinding.ActivityMainBinding
 import com.example.mvprecyclerview.model.Result
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() ,MainActivityContract.View{
     lateinit var binding:ActivityMainBinding
     lateinit var mlist: ArrayList<Result>
     lateinit var mAdapter:MovieAdapter
+    @Inject
     lateinit var movieAdapter:MovieAdapterNew
+    @Inject
+    lateinit var presenter: MainViewPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
      binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val presenter=MainViewPresenter(this)
+  //  val presenter=MainViewPresenter(this)
     /*    binding.apply {
             mAdapter=MovieAdapter(mlist,this@MainActivity)
             recyclerView.layoutManager=GridLayoutManager(this@MainActivity,2)
             recyclerView.adapter=mAdapter
         }*/
-
 
     }
 
@@ -42,7 +47,7 @@ class MainActivity : AppCompatActivity() ,MainActivityContract.View{
         )
         mlist=ArrayList()
       //  mAdapter=MovieAdapter(mlist,this@MainActivity)
-         movieAdapter=MovieAdapterNew()
+        // movieAdapter=MovieAdapterNew()
         binding.apply {
             recyclerView.layoutManager=LinearLayoutManager(this@MainActivity)
             //recyclerView.layoutManager=GridLayoutManager(this@MainActivity,2)

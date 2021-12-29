@@ -4,9 +4,11 @@ import android.util.Log
 import com.example.mvprecyclerview.model.MovieModel
 import com.example.mvprecyclerview.model.ServerResponse
 import retrofit2.Response
+import javax.inject.Inject
 
 
-class MainViewPresenter (val view: MainActivityContract.View):MainActivityContract.Presenter,MainActivityContract.ApiListener{
+class MainViewPresenter @Inject constructor(private val view: MainActivityContract.View    ):
+    MainActivityContract.Presenter,MainActivityContract.ApiListener{
 
      var mModel: MainActivityContract.Model
 

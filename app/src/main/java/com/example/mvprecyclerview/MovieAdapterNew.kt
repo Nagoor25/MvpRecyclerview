@@ -10,11 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.mvprecyclerview.api.ApiInterface
 import com.example.mvprecyclerview.databinding.MovieRowBinding
 import com.example.mvprecyclerview.model.Result
+import javax.inject.Inject
 
 
-
-
-class MovieAdapterNew():RecyclerView.Adapter<MovieAdapterNew.MyHolder> (){
+class MovieAdapterNew @Inject constructor():RecyclerView.Adapter<MovieAdapterNew.MyHolder> (){
   private val differCallBack=object :DiffUtil.ItemCallback<Result>(){
       override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
           return oldItem.id==newItem.id
